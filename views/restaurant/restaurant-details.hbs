@@ -1,0 +1,17 @@
+{{> header}}
+    <main class="centered">
+        <h1>{{ restaurant.name }}</h1>
+        <hr>
+        <div>
+            <img src="/{{ restaurant.img }}" alt="{{ restaurant.name }}" width="300" height="300">
+        </div>
+        <h2>{{ restaurant.city }}</h2>
+        <p>{{ restaurant.category }}</p>
+        <a href="/reservation" class="btn">Create Reservation</a>
+        {{!-- <form action="/reservation" method="post">
+            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+            <button class="btn" type="submit">Create Reservation</button>
+            <input type="hidden" name="restaurantId" value="{{ restaurant._id }}">
+        </form> --}}
+    </main>
+{{> footer}}

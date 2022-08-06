@@ -1,0 +1,40 @@
+{{> header}}
+<main>
+    {{#if errorMessage}}
+        <div class="user-message user-message--error">{{ errorMessage.msg }}</div>
+    {{/if}}
+    <form class="login-form" action="/signup" method="POST" novalidate>
+        <div class="form-control">
+            <label for="email">E-Mail</label>
+            <input 
+                class="{{#if emailValidationError }}invalid{{/if}}"
+                type="email" 
+                name="email" 
+                id="email" 
+                value="{{ oldInput.email }}"
+            >
+        </div>
+        <div class="form-control">
+            <label for="phone_number">Phone Number</label>
+            <input 
+                class="{{#if phoneNumberValidationError }}invalid{{/if}}"
+                type="text"
+                name="phone_number" 
+                id="phone_number" 
+                value="{{ oldInput.phone_number }}"
+            >
+        </div>
+        <div class="form-control">
+            <label for="password">Password</label>
+            <input 
+                class="{{#if passwordValidationError }}invalid{{/if}}"
+                type="password" 
+                name="password" 
+                id="password" 
+                value="{{ oldInput.password }}">
+        </div>
+        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+        <button class="btn" type="submit">Sign Up</button>
+    </form>
+</main>
+{{> footer}}

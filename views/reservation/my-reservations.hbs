@@ -1,0 +1,26 @@
+{{> header}}
+<main>
+    {{#if hasReservations }}
+    <div class="grid">
+        {{#each reservations}}
+        <article class="card product-item">
+            <header class="card__header">
+                <h1 class="product__title">{{ restaurant.name }}</h1>
+            </header>
+            <div class="card__content">
+                <h2 class="product__price">Notes</h2>
+                <p class="product__description">{{ date }}</p>
+                <p class="product__description">{{ notes }}</p>
+            </div>
+            <form action="/my-reservations/{{ _id }}" method="post">
+                <input type="hidden" name="_csrf" value="{{ @csrfToken }}">
+                <button type="submit" class="btn centered">Delete</button>
+            </form>
+        </article>
+        {{/each}}
+    </div>
+    {{ else }}
+    <h1>No Reservations Found!</h1>
+    {{/if}}
+</main>
+{{> footer}}

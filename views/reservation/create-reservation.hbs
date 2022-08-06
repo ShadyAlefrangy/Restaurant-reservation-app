@@ -1,0 +1,43 @@
+{{> header}}
+    <main>
+        {{#if errorMessage}}
+            <div class="user-message user-message--error">{{ errorMessage }}</div>
+        {{/if}}
+        <form class="product-form" action="/reservation" method="POST" novalidate>
+            <div class="form-control">
+                <label for="date">Date of Reservation</label>
+                <input 
+                    class="{{#if datetimeValidationError }}invalid{{/if}}"
+                    type="date" 
+                    name="date" 
+                    id="date"
+                    min="2022-08-06" max="2022-08-06" 
+                    {{!-- value="{{ oldInput.datetime }}" --}}
+                >
+            </div>
+
+            <div class="form-control">
+                <label for="time">Choose time:</label>
+
+                <select name="time" id="time">
+                    <option value="">--Please choose an option--</option>
+                    {{#each availableTimes }}
+                        <option value="{{ this }}">{{ this }}</option>
+                    {{/each}}
+                </select>
+            </div>
+
+            <div class="form-control">
+                <label for="notes">Notes</label>
+                <textarea 
+                    class="{{#if notesValidationError }}invalid{{/if}}"
+                    name="notes" 
+                    id="notes" 
+                    rows="5"
+                >{{ oldInput.notes }}</textarea>
+            </div>
+            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+            <button class="btn" type="submit">Create Reservation</button>
+        </form>
+    </main>
+{{> footer}}
