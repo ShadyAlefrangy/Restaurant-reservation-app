@@ -19,7 +19,7 @@ const PORT = 3000;
 const app = express();
 const MongoDBStore = connectMongoDBSession(session);
 const store = new MongoDBStore({
-    uri: 'mongodb+srv://shady:shady329921@cluster0.4rv4jja.mongodb.net/?retryWrites=true&w=majority',
+    uri: 'mongodb+srv://shady:********@cluster0.4rv4jja.mongodb.net/?retryWrites=true&w=majority',
     collection: 'sessions'
 });
 dbConnect();
